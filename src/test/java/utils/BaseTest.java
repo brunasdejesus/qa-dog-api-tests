@@ -9,6 +9,7 @@ public class BaseTest {
     public static void setup() {
 
         RestAssured.baseURI = "https://dog.ceo/api";
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 
     }
 }

@@ -16,7 +16,10 @@ public class BreedsTest extends BaseTest {
                 .get("/breeds/list/all")
                 .then()
                 .statusCode(200)
-                .body("status", equalTo("success"));
+                .time(lessThan(3000L))
+                .body("status", equalTo("success"))
+                .body("message", notNullValue());
+
 
     }
 
@@ -28,6 +31,7 @@ public class BreedsTest extends BaseTest {
                 .get("/breed/hound/images")
                 .then()
                 .statusCode(200)
+                .time(lessThan(3000L))
                 .body("status", equalTo("success"))
                 .body("message", not(empty()));
 
@@ -41,6 +45,7 @@ public class BreedsTest extends BaseTest {
                 .get("/breeds/image/random")
                 .then()
                 .statusCode(200)
+                .time(lessThan(3000L))
                 .body("status", equalTo("success"))
                 .body("message", containsString("https://"));
 
